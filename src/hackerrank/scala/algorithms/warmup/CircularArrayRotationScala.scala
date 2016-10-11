@@ -1,3 +1,5 @@
+package algorithms.warmup
+
 
 object CircularArrayRotationScala extends App {
   val in = new java.util.Scanner(System.in)

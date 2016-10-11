@@ -1,3 +1,5 @@
+package algorithms.warmup
+
 object CompareTheTripletsScala extends App {
   val sc = new java.util.Scanner(System.in)
   val ratingAlice = sc.nextLine().split(" ").map(_.toInt)
