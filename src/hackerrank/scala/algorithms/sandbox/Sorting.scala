@@ -67,6 +67,38 @@ object Sorting {
     }
   }
 
+  def quickSort(array: Array[Int]): Array[Int] = {
+    def choosePivot: Int = {
+      val r = new Random()
+      r.nextInt(array.length)
+    }
+
+    if (array.length < 2) {
+      array
+    } else {
+      val idx = choosePivot
+      val el = array(idx)
+      val subArray = Array.ofDim[Int](array.length)
+      var smallerCount = 0
+      var biggerCount = 0
+      for (i <- array.indices) {
+        if (i != idx) {
+          if (array(i) < el) {
+            subArray(smallerCount) = array(i)
+            smallerCount += 1
+          } else {
+            subArray(array.length - 1 - biggerCount) = array(i)
+            biggerCount += 1
+          }
+        }
+      }
+
+      val sortedHs = quickSort(subArray.slice(0, smallerCount))
+      val sortedTs = quickSort(subArray.slice(array.length - biggerCount, array.length))
+      sortedHs ++ Array(el) ++ sortedTs
+    }
+  }
+
 }
 
 object SortingMain extends App {
@@ -77,6 +109,7 @@ object SortingMain extends App {
   benchmark("Heap Sort", Sorting.heapSort, sample)
   benchmark("Insertion Sort", Sorting.insertionSort, sample)
   benchmark("Merge Sort", Sorting.mergeSort, sample)
+  benchmark("Quick Sort", Sorting.quickSort, sample)
 
   def benchmark(name: String, alg: Array[Int] => Array[Int], arr: Array[Int]): Array[Int] = {
     val copy = Array.ofDim[Int](arr.length)
