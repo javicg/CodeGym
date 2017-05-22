@@ -11,10 +11,9 @@ object PermutingTwoArrays extends App {
     val a = in.nextLine().split("\\s").map(_.toInt).sorted
     val b = in.nextLine().split("\\s").map(_.toInt).sorted(Ordering.Int.reverse)
 
-    if (a.indices.forall(i => a(i) + b(i) >= cap)) {
+    if (a.indices.forall(i => a(i) + b(i) >= cap))
       println("YES")
-    } else {
+    else
       println("NO")
-    }
   })
 }
