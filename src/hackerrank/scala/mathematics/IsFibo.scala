@@ -1,4 +1,4 @@
-package fundamentals
+package mathematics
 
 object IsFibo extends App {
   val in = new java.util.Scanner(System.in)
